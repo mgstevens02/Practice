@@ -16,27 +16,39 @@ FOR ACCESSING DATA CLICK [HERE](https://drive.google.com/drive/folders/1bO_FQJM7
 **IMPORTING DATA INTO COLAB ENVIRONMENT**
 """
 
-# Commented out IPython magic to ensure Python compatibility.
-from google.colab import drive
-drive.mount('/content/drive')
-
-!git clone https://github.com/mgstevens02/Compulsory-Education-IV-Replication.git
-
-# Change directory to the cloned repository
-# %cd Compulsory-Education-IV-Replication
-
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
 
-from google.colab import files
+# Function to replace Google Colab's drive.mount and direct file access
+def download_data(url):
+    return pd.read_csv(url)
 
-!wget https://github.com/mgstevens02/Compulsory-Education-IV-Replication/blob/cb1cddf3b7ed8b127357f5aea2caf64b97b5ef7b/1980_30_39_all_data.csv
-!wget https://github.com/mgstevens02/Compulsory-Education-IV-Replication/blob/cb1cddf3b7ed8b127357f5aea2caf64b97b5ef7b/1980_40_49_base_data.csv
-!wget https://github.com/mgstevens02/Compulsory-Education-IV-Replication/blob/cb1cddf3b7ed8b127357f5aea2caf64b97b5ef7b/1980_40_49_extra_data.csv
-!wget https://github.com/mgstevens02/Compulsory-Education-IV-Replication/blob/cb1cddf3b7ed8b127357f5aea2caf64b97b5ef7b/1980_50_59_base_data.csv
+# Example adjustment for data loading
+data_urls = {
+    "1980_30_39_all_data": "https://raw.githubusercontent.com/mgstevens02/Compulsory-Education-IV-Replication/main/1980_30_39_all_data.csv",
+    "1980_40_49_base_data": "https://raw.githubusercontent.com/mgstevens02/Compulsory-Education-IV-Replication/main/1980_40_49_base_data.csv",
+    "1980_40_49_extra_data": "https://raw.githubusercontent.com/mgstevens02/Compulsory-Education-IV-Replication/main/1980_40_49_extra_data.csv",
+    "1980_50_59_base_data": "https://raw.githubusercontent.com/mgstevens02/Compulsory-Education-IV-Replication/main/1980_50_59_base_data.csv"
+}
 
+# Downloading data
+datasets = {name: download_data(url) for name, url in data_urls.items()}
 
-# Display the first 5 rows of the dataframe
-print(data.head())
+# Adjusted analysis example (for one dataset and analysis section)
+df = datasets["1980_30_39_all_data"]
+
+# Proceed with analysis as in the original script...
+# (Replication of figures and statistical analysis using downloaded data)
+
+# Note: This example shows the initial step to adjust the data loading process.
+# Further adjustments will involve replacing all Google Colab specific commands,
+# updating file paths, and ensuring compatibility with local or web-based data access methods.
+
+# For sections involving statistical analysis, plotting, or any operations on the data,
+# ensure the libraries needed (pandas, numpy, matplotlib, statsmodels) are installed in your environment.
+
 
 """## **SECTION I: SEASON OF BIRTH, COMPULSORY SCHOOLING, AND YEARS OF EDUCATION**
 
